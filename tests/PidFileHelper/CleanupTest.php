@@ -11,7 +11,6 @@ use org\bovigo\vfs\vfsStreamDirectory;
 use YevgenGrytsay\PidHelper\PidCleaner;
 use YevgenGrytsay\PidHelper\ProcessControlInterface;
 use YevgenGrytsay\PidHelper\tests\ProcessControlDummy;
-use YevgenGrytsay\PidHelper\tests\ProcessControlStub;
 
 class CleanupTest extends \PHPUnit_Framework_TestCase
 {
@@ -19,6 +18,9 @@ class CleanupTest extends \PHPUnit_Framework_TestCase
      * @var vfsStreamDirectory
      */
     protected $dir;
+    /**
+     * @var string
+     */
     protected $pidBasename = 'worker_1.pid';
 
     /**
@@ -30,7 +32,7 @@ class CleanupTest extends \PHPUnit_Framework_TestCase
         $this->dir = vfsStream::setup('pidDir');
     }
 
-    public function testNoSuchProcess()
+    public function testShouldDeletePidFile()
     {
         $file = $this->createFileWithPidNotNull();
         $processControl = $this->createProcessControlStubExisting(false);
@@ -41,7 +43,7 @@ class CleanupTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->dir->hasChild($this->pidBasename));
     }
 
-    public function testProcessIsRunning()
+    public function testShouldThrowExceptionIfProcessIsRunning()
     {
         $file = $this->createFileWithExistingPid();
         $processControl = $this->createProcessControlStubExisting(true);
@@ -55,7 +57,7 @@ class CleanupTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->dir->hasChild($this->pidBasename));
     }
 
-    public function testFailDelete()
+    public function testShouldThrowExceptionIfUnableToDeleteFile()
     {
         $file = $this->createDummyFile();
         $processControl = new ProcessControlDummy();
@@ -70,7 +72,7 @@ class CleanupTest extends \PHPUnit_Framework_TestCase
         $cleanup->clean($fileInfo);
     }
 
-    public function testFileOpenFail()
+    public function testShouldThrowExceptionIfFileOpenFails()
     {
         $file = $this->createNotReadableDummyFile();
         $processControl = new ProcessControlDummy();
