@@ -1,13 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: yevgen
- * Date: 20.07.15
- * Time: 16:30
+ * @author: Yevgen Grytsay <yevgen_grytsay@mail.ru>
+ * @date  : 20.07.15
  */
 
 namespace YevgenGrytsay\PidHelper\PidFileHelper\Exception;
-
 
 class FopenException extends \Exception
 {

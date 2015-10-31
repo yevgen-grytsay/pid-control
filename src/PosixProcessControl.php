@@ -1,17 +1,11 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: yevgen
- * Date: 20.07.15
- * Time: 14:22
+ * @author: Yevgen Grytsay <yevgen_grytsay@mail.ru>
+ * @date  : 20.07.15
  */
 
 namespace YevgenGrytsay\PidHelper;
 
-/**
- * Class ProcessHelper
- * @package YevgenGrytsay\PidHelper
- */
 class PosixProcessControl implements ProcessControlInterface
 {
     /**

@@ -1,13 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: yevgen
- * Date: 20.07.15
- * Time: 15:37
+ * @author: Yevgen Grytsay <yevgen_grytsay@mail.ru>
+ * @date  : 20.07.15
  */
 
 namespace YevgenGrytsay\PidHelper\PidFileHelper;
-
 
 class FlockContext implements ContextInterface
 {
@@ -32,7 +29,7 @@ class FlockContext implements ContextInterface
         if ($lock === false) {
             throw new \RuntimeException(sprintf('Не удается заблокировать файл "%s" в режиме "%d".',
                 $this->file->getPathname(), $this->operation
-        ));
+            ));
         }
     }
 

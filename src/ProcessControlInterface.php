@@ -1,10 +1,10 @@
 <?php
 /**
- * @author: yevgen
+ * @author: Yevgen Grytsay <yevgen_grytsay@mail.ru>
+ * @date  : 31.10.15
  */
 
 namespace YevgenGrytsay\PidHelper;
-
 
 interface ProcessControlInterface
 {

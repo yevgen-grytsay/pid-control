@@ -1,13 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: yevgen
- * Date: 21.07.15
- * Time: 17:00
+ * @author: Yevgen Grytsay <yevgen_grytsay@mail.ru>
+ * @date  : 20.07.15
  */
 
 namespace YevgenGrytsay\PidHelper\tests\PidFileHelper;
-
 
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;

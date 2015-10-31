@@ -1,9 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: yevgen
- * Date: 20.07.15
- * Time: 14:23
+ * @author: Yevgen Grytsay <yevgen_grytsay@mail.ru>
+ * @date  : 31.10.15
  */
 
 namespace YevgenGrytsay\PidHelper\tests;

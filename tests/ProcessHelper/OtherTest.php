@@ -1,13 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: yevgen
- * Date: 20.07.15
- * Time: 14:53
+ * @author: Yevgen Grytsay <yevgen_grytsay@mail.ru>
+ * @date  : 20.07.15
  */
 
 namespace YevgenGrytsay\PidHelper\tests\ProcessHelper;
-
 
 use YevgenGrytsay\PidHelper\PosixProcessControl;
 
