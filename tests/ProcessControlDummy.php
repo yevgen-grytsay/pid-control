@@ -19,4 +19,24 @@ class ProcessControlDummy implements ProcessControlInterface
     {
         return null;
     }
+
+    /**
+     * @param int $pid
+     *
+     * @return bool
+     */
+    public function kill($pid)
+    {
+        return null;
+    }
+
+    /**
+     * @param int $pid
+     *
+     * @return bool
+     */
+    public function terminate($pid)
+    {
+        return null;
+    }
 }

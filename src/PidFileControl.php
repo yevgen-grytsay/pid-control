@@ -9,6 +9,7 @@
 namespace YevgenGrytsay\PidHelper;
 
 
+use Assert\Assertion;
 use YevgenGrytsay\PidHelper\PidFileHelper\ContextChain;
 use YevgenGrytsay\PidHelper\PidFileHelper\FlockContext;
 use YevgenGrytsay\PidHelper\PidFileHelper\FopenContext;
@@ -37,13 +38,8 @@ class PidFileControl
         $this->filename = (string)$filename;
         $this->pid = (int)$pid;
 
-        if ($this->filename === '') {
-            throw new \RuntimeException('Имя файла не может быть пустым.');
-        }
-
-        if ($this->pid <= 0) {
-            throw new \RuntimeException('Pid не может быть пустым.');
-        }
+        Assertion::notEmpty($this->filename, 'Имя файла не может быть пустым.');
+        Assertion::greaterThan($this->pid, 0, 'Pid не может быть пустым.');
     }
 
     /**

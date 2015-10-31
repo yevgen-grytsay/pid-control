@@ -13,6 +13,9 @@ use YevgenGrytsay\PidHelper\PosixProcessControl;
 
 class OtherTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @requires extension posix
+     */
     public function testNoPermission()
     {
         $helper = new PosixProcessControl();

@@ -12,6 +12,7 @@ namespace YevgenGrytsay\PidHelper\tests\PidFileHelper;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
 use YevgenGrytsay\PidHelper\PidCleaner;
+use YevgenGrytsay\PidHelper\ProcessControlInterface;
 use YevgenGrytsay\PidHelper\tests\ProcessControlDummy;
 use YevgenGrytsay\PidHelper\tests\ProcessControlStub;
 
@@ -35,7 +36,7 @@ class CleanupTest extends \PHPUnit_Framework_TestCase
     public function testNoSuchProcess()
     {
         $file = $this->createFileWithPidNotNull();
-        $processControl = new ProcessControlStub(false);
+        $processControl = $this->createProcessControlStubExisting(false);
         $fileInfo = new \SplFileInfo($file->url());
         $cleanup = new PidCleaner($processControl);
         $cleanup->clean($fileInfo);
@@ -46,7 +47,7 @@ class CleanupTest extends \PHPUnit_Framework_TestCase
     public function testProcessIsRunning()
     {
         $file = $this->createFileWithExistingPid();
-        $processControl = new ProcessControlStub(true);
+        $processControl = $this->createProcessControlStubExisting(true);
         $fileInfo = new \SplFileInfo($file->url());
         $cleanup = new PidCleaner($processControl);
 
@@ -176,5 +177,20 @@ class CleanupTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($lock);
 
         return $file;
+    }
+
+    /**
+     * @param boolean $existing
+     *
+     * @return ProcessControlInterface
+     */
+    protected function createProcessControlStubExisting($existing)
+    {
+        $mock = $this->getMock(ProcessControlInterface::class);
+        $mock->expects($this->any())
+            ->method('exists')
+            ->willReturn((boolean)$existing);
+
+        return $mock;
     }
 }
