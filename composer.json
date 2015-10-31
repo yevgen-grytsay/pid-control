@@ -1,0 +1,28 @@
+{
+  "name": "yevgen-grytsay/pid-helper",
+  "description": "Process id file creation managing",
+  "keywords": ["pid", "process"],
+  "minimum-stability": "dev",
+  "license": "BSD",
+  "authors": [
+    {
+      "name": "Yevgen Grytsay",
+      "email": "yevgen_grytsay@mail.ru"
+    }
+  ],
+  "require-dev": {
+    "php": ">=5.4,<7",
+    "phpunit/phpunit": "~4.8",
+    "mikey179/vfsStream": "~1.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "YevgenGrytsay\\PidHelper\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "classmap": [
+      "tests"
+    ]
+  }
+}
